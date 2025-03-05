@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Store Information</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            width: 400px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2 {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            margin: 10px 0 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            color: #ff5e62;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #ffcccb;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Dark Store Registration</h2>
+
+        <form action="submit-darkstore.php" method="POST">
+            <label for="store-name">Dark Store Name:</label>
+            <input type="text" id="store-name" name="store_name" placeholder="Enter Store Name" required>
+
+            <label for="business-type">Business Type:</label>
+            <select id="business-type" name="business_type" required>
+                <option value="franchise">Franchise</option>
+                <option value="independent">Independent</option>
+                <option value="warehouse">Warehouse</option>
+            </select>
+
+            <label for="gst-number">GST Number:</label>
+            <input type="text" id="gst-number" name="gst_number" placeholder="Enter GST Number" required>
+
+            <label for="fssai-number">FSSAI License Number (For Food Items):</label>
+            <input type="text" id="fssai-number" name="fssai_number" placeholder="Enter FSSAI Number" required>
+
+            <label for="pan-card">PAN Card Number:</label>
+            <input type="text" id="pan-card" name="pan_card" placeholder="Enter PAN Number" required>
+
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>
