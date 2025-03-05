@@ -80,7 +80,7 @@
     <div class="container">
         <h2>Dark Store Registration</h2>
 
-        <form action="submit-darkstore.php" method="POST">
+        <form id="darkStoreForm" action="submit-darkstore.php" method="POST">
             <label for="store-name">Dark Store Name:</label>
             <input type="text" id="store-name" name="store_name" placeholder="Enter Store Name" required>
 
@@ -101,12 +101,19 @@
             <input type="text" id="pan-card" name="pan_card" placeholder="Enter PAN Number" required>
 
             <button type="submit" class="btn">Submit</button>
-
-
         </form>
     </div>
 
+    <script>
+        document.getElementById("darkStoreForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Simulate form submission (if using backend, remove setTimeout)
+            setTimeout(() => {
+                window.location.href = "bank-details.html"; // Redirect to Bank Details page
+            }, 1000); // 1-second delay before redirection
+        });
+    </script>
+
 </body>
 </html>
-
-

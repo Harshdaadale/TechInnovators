@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Store Information</title>
+    <title>Brand Details</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             background: linear-gradient(to right, #ff9966, #ff5e62);
             color: white;
-            margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             flex-direction: column;
+            margin: 0;
         }
 
         .container {
@@ -42,7 +41,7 @@
             margin: 10px 0 5px;
         }
 
-        input, select {
+        input {
             width: 100%;
             padding: 10px;
             border: none;
@@ -78,35 +77,18 @@
 <body>
 
     <div class="container">
-        <h2>Dark Store Registration</h2>
+        <h2>Brand Details</h2>
+        
+        <form action="submit-brand.php" method="POST">
+            <label for="brand-name">Brand Name (if different from Store Name):</label>
+            <input type="text" id="brand-name" name="brand_name" placeholder="Enter Brand Name">
 
-        <form action="submit-darkstore.php" method="POST">
-            <label for="store-name">Dark Store Name:</label>
-            <input type="text" id="store-name" name="store_name" placeholder="Enter Store Name" required>
-
-            <label for="business-type">Business Type:</label>
-            <select id="business-type" name="business_type" required>
-                <option value="franchise">Franchise</option>
-                <option value="independent">Independent</option>
-                <option value="warehouse">Warehouse</option>
-            </select>
-
-            <label for="gst-number">GST Number:</label>
-            <input type="text" id="gst-number" name="gst_number" placeholder="Enter GST Number" required>
-
-            <label for="fssai-number">FSSAI License Number (For Food Items):</label>
-            <input type="text" id="fssai-number" name="fssai_number" placeholder="Enter FSSAI Number" required>
-
-            <label for="pan-card">PAN Card Number:</label>
-            <input type="text" id="pan-card" name="pan_card" placeholder="Enter PAN Number" required>
-
-            <button type="submit" class="btn">Submit</button>
-
-
+            <label for="gst-number">GST Number (Optional for Small Sellers, Mandatory for Registered Business):</label>
+            <input type="text" id="gst-number" name="gst_number" placeholder="Enter GST Number">
+            
+            <button type="submit" class="btn">Continue</button>
         </form>
     </div>
 
 </body>
 </html>
-
-

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            width: 400px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            color: #ff5e62;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #ffcccb;
+            transform: scale(1.05);
+        }
+
+        .error {
+            color: yellow;
+            font-size: 14px;
+            display: none;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Bank Details</h2>
+
+        <form id="bankDetailsForm">
+            <label for="account-number">Account Number:</label>
+            <input type="text" id="account-number" name="account_number" placeholder="Enter account number" required>
+            <div class="error" id="account-error">Please enter your account number.</div>
+
+            <label for="ifsc-code">IFSC Code:</label>
+            <input type="text" id="ifsc-code" name="ifsc_code" placeholder="Enter IFSC code" required>
+            <div class="error" id="ifsc-error">Please enter a valid IFSC code.</div>
+
+            <button type="submit" class="btn">Next</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("bankDetailsForm").addEventListener("submit", function(event) {
+            let valid = true;
+            
+            let accountNumber = document.getElementById("account-number");
+            let ifscCode = document.getElementById("ifsc-code");
+
+            let accountError = document.getElementById("account-error");
+            let ifscError = document.getElementById("ifsc-error");
+
+            // Reset errors
+            accountError.style.display = "none";
+            ifscError.style.display = "none";
+
+            // Validate Account Number
+            if (accountNumber.value.trim() === "") {
+                accountError.style.display = "block";
+                valid = false;
+            }
+
+            // Validate IFSC Code
+            if (ifscCode.value.trim() === "" || ifscCode.value.length !== 11) {
+                ifscError.style.display = "block";
+                valid = false;
+            }
+
+            if (!valid) {
+                event.preventDefault(); // Prevent form submission if fields are invalid
+            } else {
+                window.location.href = "next-page.html"; // Redirect if all fields are valid
+            }
+        });
+    </script>
+
+</body>
+</html>
