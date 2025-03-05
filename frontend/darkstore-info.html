@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Store Registration</title>
+    <title>Dark Store Information</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
@@ -13,41 +13,13 @@
             margin: 0;
             padding: 0;
             display: flex;
-            height: 100vh;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: 200px;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-            margin: 10px 0;
-            display: block;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-            transition: 0.3s;
-        }
-        .sidebar a:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Form Container */
-        .container {
-            flex-grow: 1;
-            display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh;
+            flex-direction: column;
         }
 
-        .form-box {
+        .container {
             background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 12px;
@@ -97,76 +69,54 @@
             transform: scale(1.05);
         }
 
-        .hidden {
-            display: none;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-   
-
-    <!-- Main Form Container -->
     <div class="container">
-        <div class="form-box">
-            <h2>Dark Store Registration</h2>
+        <h2>Dark Store Registration</h2>
 
-            <!-- Step 1: Brand Details -->
-            <form id="brand-details">
-                <label for="brand-name">Brand Name:</label>
-                <input type="text" id="brand-name" name="brand_name" placeholder="Enter Brand Name" required>
+        <form id="darkStoreForm" action="submit-darkstore.php" method="POST">
+            <label for="store-name">Dark Store Name:</label>
+            <input type="text" id="store-name" name="store_name" placeholder="Enter Store Name" required>
 
-                <label for="company-name">Company Name (If Different):</label>
-                <input type="text" id="company-name" name="company_name" placeholder="Enter Company Name">
+            <label for="business-type">Business Type:</label>
+            <select id="business-type" name="business_type" required>
+                <option value="franchise">Franchise</option>
+                <option value="independent">Independent</option>
+                <option value="warehouse">Warehouse</option>
+            </select>
 
-                <label for="gst-number">GST Number:</label>
-                <input type="text" id="gst-number" name="gst_number" placeholder="Enter GST Number">
+            <label for="gst-number">GST Number:</label>
+            <input type="text" id="gst-number" name="gst_number" placeholder="Enter GST Number" required>
 
-                <button type="button" class="btn" onclick="nextStep('brand-details', 'bank-details')">Next</button>
-            </form>
+            <label for="fssai-number">FSSAI License Number (For Food Items):</label>
+            <input type="text" id="fssai-number" name="fssai_number" placeholder="Enter FSSAI Number" required>
 
-            <!-- Step 2: Bank Details (Hidden Initially) -->
-            <form id="bank-details" class="hidden">
-                <label for="account-holder">Account Holder's Name:</label>
-                <input type="text" id="account-holder" name="account_holder" placeholder="Enter Name" required>
+            <label for="pan-card">PAN Card Number:</label>
+            <input type="text" id="pan-card" name="pan_card" placeholder="Enter PAN Number" required>
 
-                <label for="bank-name">Bank Name:</label>
-                <input type="text" id="bank-name" name="bank_name" placeholder="Enter Bank Name" required>
-
-                <label for="ifsc-code">IFSC Code:</label>
-                <input type="text" id="ifsc-code" name="ifsc_code" placeholder="Enter IFSC Code" required>
-
-                <label for="account-number">Account Number:</label>
-                <input type="text" id="account-number" name="account_number" placeholder="Enter Account Number" required>
-
-                <label for="upi-id">UPI ID (Optional):</label>
-                <input type="text" id="upi-id" name="upi_id" placeholder="Enter UPI ID">
-
-                <button type="button" class="btn" onclick="nextStep('bank-details', 'digital-signature')">Next</button>
-            </form>
-
-            <!-- Step 3: Digital Signature (Hidden Initially) -->
-            <form id="digital-signature" class="hidden">
-                <label for="signature-upload">Upload Digital Signature (PNG, JPG):</label>
-                <input type="file" id="signature-upload" name="digital_signature" accept="image/png, image/jpeg" required>
-
-                <label>
-                    <input type="checkbox" required> I agree to the Terms & Conditions
-                </label>
-
-                <button type="submit" class="btn">Verify & Submit</button>
-            </form>
-        </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
     </div>
 
     <script>
-        function nextStep(currentForm, nextForm) {
-            document.getElementById(currentForm).classList.add('hidden');
-            document.getElementById(nextForm).classList.remove('hidden');
-        }
+        document.getElementById("darkStoreForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Simulate form submission (if using backend, remove setTimeout)
+            setTimeout(() => {
+                window.location.href = "bank-details.html"; // Redirect to Bank Details page
+            }, 1000); // 1-second delay before redirection
+        });
     </script>
 
 </body>
 </html>
+
 
 
