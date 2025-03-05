@@ -61,7 +61,7 @@
 <body>
     <div class="signup-container">
         <h2>Retailer Sign Up</h2>
-        <form action="submit_retailer.php" method="POST">
+        <form id="retailerSignupForm">
             <div class="input-group">
                 <label for="store-name">Store Name</label>
                 <input type="text" id="store-name" name="store_name" required>
@@ -81,5 +81,14 @@
             <button type="submit" class="btn">Sign Up</button>
         </form>
     </div>
+
+    <script>
+        document.getElementById("retailerSignupForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            // Redirect to the About Us page
+            window.location.href = "aboutus.html"; 
+        });
+    </script>
 </body>
 </html>
