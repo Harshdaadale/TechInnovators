@@ -1,9 +1,8 @@
+from django.shortcuts import render, redirect
 
-
-# Create your views here.
-from django.http import JsonResponse
-from .models import Product
-
-def product_list(request):
-    products = list(Product.objects.values())
-    return JsonResponse(products, safe=False)
+def retailer_signup(request):
+    if request.method == "POST":
+        # Process form data here (save to database, validate, etc.)
+        
+        return redirect("aboutus")  # Redirect to "About Us" page
+    return render(request, "retailer-signup.html")
